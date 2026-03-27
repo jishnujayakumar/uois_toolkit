@@ -1,12 +1,13 @@
 [project]
 name = "uois_toolkit"
-version = "0.1.0"
+version = "0.1.2"
 description = "A toolkit for loading Unseen Object Instance Segmentation (UOIS) datasets."
 readme = "README.md"
 authors = [
     { name = "Jishnu Jaykumar Padalunkal", email = "jishnu.p@utdallas.edu" },
     { name = "Avaya Aggarwal", email = "aggarwal.avaya27@gmail.com" },
-    { name = "Animesh Maheshwari", email = "animesh.maheshwari02@gmail.com" }
+    { name = "Animesh Maheshwari", email = "animesh.maheshwari02@gmail.com" },
+    { name = "IRVL UTD", email = "irvl.utd@gmail.com" }
 ]
 license = { text = "MIT" }
 requires-python = ">=3.9"

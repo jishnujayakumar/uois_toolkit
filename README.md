@@ -1,8 +1,10 @@
 #  **uois_toolkit**  
+
 A toolkit for **Unseen Object Instance Segmentation (UOIS)**  
+![banner](banner.png)
 
 [![Sanity Check](https://github.com/OnePunchMonk/uois_toolkit/actions/workflows/sanity_check.yml/badge.svg)](https://github.com/OnePunchMonk/uois_toolkit/actions/workflows/sanity_check.yml)
-
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/uois-toolkit?period=total&units=ABBREVIATION&left_color=BLACK&right_color=RED&left_text=downloads)](https://pepy.tech/projects/uois-toolkit)
 A PyTorch-based toolkit for loading and processing datasets for **Unseen Object Instance Segmentation (UOIS)**. This repository provides a standardized, easy-to-use interface for several popular UOIS datasets, simplifying the process of training and evaluating segmentation models.
 
 ---
@@ -38,6 +40,14 @@ A PyTorch-based toolkit for loading and processing datasets for **Unseen Object 
     pip install -e .
     ```
 
+**Note about detectron2**
+
+This project depends on `detectron2` for some dataset utilities and mask handling. `detectron2` includes C++ extensions and must be built for your platform — it cannot always be installed as a pure Python wheel. Please follow the official installation instructions in the Detectron2 meta-repository and install a version compatible with your PyTorch and CUDA (or CPU-only) environment before running the tests or using the datasets:
+
+- Detectron2 installation guide and wheels: https://github.com/facebookresearch/detectron2
+
+On many systems you can install a compatible CPU-only wheel using the prebuilt index, or build from source if needed. If you are running on CI, ensure the runner has the necessary build tools and compatible PyTorch version.
+
 ---
 
 ## Supported Datasets
@@ -54,7 +64,7 @@ This toolkit provides dataloaders for the following datasets:
 
 - **Main Datasets (TOD, OCID, OSD, Robot Pushing)**:
   - [**Download from Box**](https://utdallas.box.com/v/uois-datasets)
-
+  - [**Robot Pushing**](https://utdallas.app.box.com/s/yipcemru6qsbw0wj1nsdxq1dw5mjbtiq)
 - **iTeach-HumanPlay Dataset**:
   - **D5**: [Download](https://utdallas.box.com/v/iTeach-HumanPlay-D5)
   - **D40**: [Download](https://utdallas.box.com/v/iTeach-HumanPlay-D40)
