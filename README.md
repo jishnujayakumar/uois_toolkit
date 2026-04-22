@@ -1,7 +1,7 @@
 #  **uois_toolkit**  
 
 A toolkit for **Unseen Object Instance Segmentation (UOIS)**  
-![banner](banner.gif)
+![banner](banner.svg)
 
 [![Sanity Check](https://github.com/jishnujayakumar/uois_toolkit/actions/workflows/sanity_check.yml/badge.svg)](https://github.com/jishnujayakumar/uois_toolkit/actions/workflows/sanity_check.yml)
 [![PyPI version](https://img.shields.io/pypi/v/uois-toolkit?color=blue)](https://pypi.org/project/uois-toolkit/)
