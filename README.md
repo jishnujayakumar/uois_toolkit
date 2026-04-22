@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="media/banner.svg" alt="uois_toolkit" width="100%"/>
+  <img src="https://raw.githubusercontent.com/jishnujayakumar/uois_toolkit/main/media/banner.gif" alt="uois_toolkit" width="100%"/>
 </p>
 
 <p align="center">
