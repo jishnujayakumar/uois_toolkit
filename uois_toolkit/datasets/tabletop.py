@@ -64,12 +64,12 @@ class TabletopDataset(BaseDataset):
         im = cv2.imread(filename)
         if im is None: logger.error(f"Failed to load image: {filename}"); return None
 
-        labels_filename = filename.replace('rgb_', 'segmentation_')
+        labels_filename = filename.replace('rgb_', 'segmentation_').replace('.jpeg', '.png')
         foreground_labels = util_.imread_indexed(labels_filename)
         if foreground_labels is None: logger.warning(f"Missing mask: {labels_filename}"); return None
         foreground_labels[foreground_labels == 1] = 0
 
-        depth_img = cv2.imread(filename.replace('rgb_', 'depth_'), cv2.IMREAD_ANYDEPTH)
+        depth_img = cv2.imread(filename.replace('rgb_', 'depth_').replace('.jpeg', '.png'), cv2.IMREAD_ANYDEPTH)
         if depth_img is None: depth_img = np.zeros((im.shape[0], im.shape[1]), dtype=np.float32)
         depth_img = (depth_img / 1000.0).astype(np.float32)
         xyz_img = self._compute_xyz(depth_img, self.data_loading_params)
@@ -85,7 +85,7 @@ class TabletopDataset(BaseDataset):
         
         objs = []
         for i in range(boxes.shape[0]):
-            mask_img = binary_masks[:, :, i]
+            mask_img = binary_masks[:, :, i].astype(np.uint8)
             objs.append({
                 "bbox": boxes[i].tolist(), "bbox_mode": BoxMode.XYXY_ABS,
                 "segmentation": pycocotools_mask.encode(np.asfortranarray(mask_img)), "category_id": 1,

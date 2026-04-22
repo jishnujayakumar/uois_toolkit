@@ -113,7 +113,14 @@ class BaseDataset(Dataset):
             if depth_crop is not None:
                 depth_crop = cv2.resize(depth_crop, (s, s), interpolation=cv2.INTER_NEAREST)
             return img_crop, label_crop, depth_crop
-        
+
+        # Fallback: if no valid crop after 10 attempts, resize the whole image
+        # to (s, s) so the collate sees a uniform shape across the batch.
+        s = self.cfg.TRAIN['SYN_CROP_SIZE']
+        img = cv2.resize(img, (s, s))
+        label = cv2.resize(label, (s, s), interpolation=cv2.INTER_NEAREST)
+        if depth is not None:
+            depth = cv2.resize(depth, (s, s), interpolation=cv2.INTER_NEAREST)
         return img, label, depth
 
     def _sample_pixels(self, labels, num=1000):

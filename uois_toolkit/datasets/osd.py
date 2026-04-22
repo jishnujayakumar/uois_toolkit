@@ -69,7 +69,14 @@ class OSDDataset(BaseDataset):
         if foreground_labels is None: logger.warning(f"Missing mask: {labels_filename}"); return None
 
         disparity_path = filename.replace('image_color', 'disparity')
-        disparity_img = imageio.imread(disparity_path)
+        try:
+            disparity_img = imageio.imread(disparity_path)
+        except Exception as e:
+            logger.warning(f"Failed to load disparity: {disparity_path}: {e}")
+            return None
+        if disparity_img is None:
+            logger.warning(f"Missing disparity: {disparity_path}")
+            return None
         normalized_disparity = normalize_depth(disparity_img)
         inpainted_disparity = inpaint_depth(normalized_disparity)
         
@@ -84,7 +91,7 @@ class OSDDataset(BaseDataset):
         
         objs = []
         for i in range(boxes.shape[0]):
-            mask_img = binary_masks[:, :, i]
+            mask_img = binary_masks[:, :, i].astype(np.uint8)
             objs.append({
                 "bbox": boxes[i].tolist(), "bbox_mode": BoxMode.XYXY_ABS,
                 "segmentation": pycocotools_mask.encode(np.asfortranarray(mask_img)), "category_id": 1,
