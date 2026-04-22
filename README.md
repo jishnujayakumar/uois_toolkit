@@ -164,7 +164,14 @@ CI runs automatically on every push via GitHub Actions.
 
 ---
 
-## Contributing
+## Contributors
+
+Thanks to these people for contributing and polishing this toolkit:
+
+<a href="https://github.com/OnePunchMonk"><img src="https://github.com/OnePunchMonk.png" width="60" style="border-radius:50%" alt="OnePunchMonk"/></a>&nbsp;
+<a href="https://github.com/AnimeshMaheshwari22"><img src="https://github.com/AnimeshMaheshwari22.png" width="60" style="border-radius:50%" alt="Animesh Maheshwari"/></a>
+
+[**@OnePunchMonk**](https://github.com/OnePunchMonk) &bull; [**@AnimeshMaheshwari22**](https://github.com/AnimeshMaheshwari22)
 
 PRs welcome! See [open issues](https://github.com/jishnujayakumar/uois_toolkit/issues).
 
