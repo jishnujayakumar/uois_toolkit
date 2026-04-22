@@ -53,13 +53,13 @@ Same API for all datasets &mdash; just swap the name: `"tabletop"`, `"osd"`, `"r
 
 ## Supported Datasets
 
-| Dataset | Type | Scenes | Objects | Source |
+| Dataset | Type | Images | Setting | Source |
 |---------|------|--------|---------|--------|
-| **[Tabletop (TOD)](https://utdallas.box.com/v/uois-datasets)** | Synthetic | ~280K | Household items | Xiang et al., CoRL 2020 |
+| **[Tabletop (TOD)](https://utdallas.box.com/v/uois-datasets)** | Synthetic | ~280K | Rendered household scenes | Xiang et al., CoRL 2020 |
 | **[OCID](https://utdallas.box.com/v/uois-datasets)** | Real | 2,390 | Cluttered tabletop | Suchi et al., ICRA 2019 |
-| **[OSD](https://utdallas.box.com/v/uois-datasets)** | Real | 111 | Tabletop objects | Richtsfeld et al., IROS 2012 |
-| **[Robot Pushing](https://utdallas.app.box.com/s/yipcemru6qsbw0wj1nsdxq1dw5mjbtiq)** | Real | 428 | Robot-object pushing | Lu et al., RSS 2023 |
-| **[iTeach-HumanPlay](https://utdallas.box.com/v/iTeach-HumanPlay-D5)** | Real | 14K+ | Human-object play | P et al., arXiv 2024 |
+| **[OSD](https://utdallas.box.com/v/uois-datasets)** | Real | 111 | Sparse tabletop | Richtsfeld et al., IROS 2012 |
+| **[Robot Pushing](https://utdallas.app.box.com/s/yipcemru6qsbw0wj1nsdxq1dw5mjbtiq)** | Real | 428 | Robot pushing objects | Lu et al., RSS 2023 |
+| **[iTeach-HumanPlay](https://utdallas.box.com/v/iTeach-HumanPlay-D5)** | Real | 14K+ | Human-object interaction | P et al., arXiv 2024 |
 
 ---
 
