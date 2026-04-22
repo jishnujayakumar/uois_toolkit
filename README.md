@@ -11,7 +11,6 @@ A toolkit for **Unseen Object Instance Segmentation (UOIS)**
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/jishnujayakumar/uois_toolkit?style=social)](https://github.com/jishnujayakumar/uois_toolkit/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/jishnujayakumar/uois_toolkit)](https://github.com/jishnujayakumar/uois_toolkit/issues)
-[![arXiv](https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg)]()
 
 A PyTorch-based toolkit for loading and processing datasets for **Unseen Object Instance Segmentation (UOIS)**. This repository provides a standardized, easy-to-use interface for several popular UOIS datasets, simplifying the process of training and evaluating segmentation models.
 
