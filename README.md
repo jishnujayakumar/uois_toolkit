@@ -23,10 +23,10 @@
 
 | Problem | Solution |
 |---------|----------|
-| Each UOIS dataset has different formats, loaders, and quirks | **Unified API** &mdash; same interface for all 5 datasets |
-| Setting up evaluation is tedious | **Built-in metrics** &mdash; F1, IoU, Precision, Recall in one call |
-| Hard to mix synthetic + real data for training | **Multi-dataset DataModule** with balanced sampling |
-| Reproducing baselines requires custom glue code | **PyTorch Lightning ready** &mdash; plug into any training loop |
+| Every UOIS dataset ships its own format and loader | **Unified API** &mdash; one interface across all 5 datasets |
+| Evaluation setup eats up research time | **Built-in metrics** &mdash; F1, IoU, Precision, Recall in a single call |
+| Mixing synthetic and real data takes custom wiring | **Multi-dataset DataModule** with balanced sampling out of the box |
+| Reproducing baselines means writing glue code | **Lightning-native** &mdash; drop into any training loop |
 
 ---
 
@@ -47,7 +47,7 @@ batch = next(iter(dm.train_dataloader()))
 # batch["annotations"]  → per-image bboxes + RLE masks
 ```
 
-That's it. Works the same for `"tabletop"`, `"osd"`, `"robot_pushing"`, and `"iteach_humanplay"`.
+Same API for all datasets &mdash; just swap the name: `"tabletop"`, `"osd"`, `"robot_pushing"`, `"iteach_humanplay"`.
 
 ---
 
@@ -58,14 +58,14 @@ That's it. Works the same for `"tabletop"`, `"osd"`, `"robot_pushing"`, and `"it
 | **[Tabletop (TOD)](https://utdallas.box.com/v/uois-datasets)** | Synthetic | ~280K | Household items | Xiang et al., CoRL 2020 |
 | **[OCID](https://utdallas.box.com/v/uois-datasets)** | Real | 2,390 | Cluttered tabletop | Suchi et al., ICRA 2019 |
 | **[OSD](https://utdallas.box.com/v/uois-datasets)** | Real | 111 | Tabletop objects | Richtsfeld et al., IROS 2012 |
-| **[Robot Pushing](https://utdallas.app.box.com/s/yipcemru6qsbw0wj1nsdxq1dw5mjbtiq)** | Real | 428 | Push interactions | Lu et al., RSS 2023 |
-| **[iTeach-HumanPlay](https://utdallas.box.com/v/iTeach-HumanPlay-D5)** | Real | 14K+ | Human demonstrations | Jishnu et al., arXiv 2024 |
+| **[Robot Pushing](https://utdallas.app.box.com/s/yipcemru6qsbw0wj1nsdxq1dw5mjbtiq)** | Real | 428 | Robot-object pushing | Lu et al., RSS 2023 |
+| **[iTeach-HumanPlay](https://utdallas.box.com/v/iTeach-HumanPlay-D5)** | Real | 14K+ | Human-object play | P et al., arXiv 2024 |
 
 ---
 
 ## Usage
 
-### Load a dataset directly
+### Load a single dataset
 
 ```python
 from uois_toolkit.datasets import OCIDDataset
@@ -119,7 +119,7 @@ cd uois_toolkit
 pip install -e .
 ```
 
-> **detectron2** is required for mask utilities. Install from [facebookresearch/detectron2](https://github.com/facebookresearch/detectron2) matching your PyTorch + CUDA version.
+> **Note:** [detectron2](https://github.com/facebookresearch/detectron2) is needed for mask utilities. Install a build that matches your PyTorch + CUDA version.
 
 ---
 
@@ -132,7 +132,7 @@ python -m pytest test/test_datamodule.py -v \
   --dataset_path osd=/data/OSD
 ```
 
-CI runs automatically on every push via GitHub Actions.
+CI runs on every push and PR via GitHub Actions.
 
 ---
 
@@ -158,7 +158,7 @@ CI runs automatically on every push via GitHub Actions.
 
 **Robot Pushing** &mdash; Lu et al., "Self-Supervised Unseen Object Instance Segmentation via Long-Term Robot Interaction", RSS 2023
 
-**iTeach-HumanPlay** &mdash; Jishnu Jaykumar P et al., "iTeach: In the Wild Interactive Teaching for Failure-Driven Adaptation of Robot Perception", [arXiv:2410.09072](https://arxiv.org/abs/2410.09072)
+**iTeach-HumanPlay** &mdash; P et al., "iTeach: In the Wild Interactive Teaching for Failure-Driven Adaptation of Robot Perception", [arXiv:2410.09072](https://arxiv.org/abs/2410.09072)
 
 </details>
 
@@ -166,7 +166,7 @@ CI runs automatically on every push via GitHub Actions.
 
 ## Contributors
 
-Thanks to these people for contributing and polishing this toolkit:
+Built and polished by:
 
 <a href="https://github.com/OnePunchMonk"><img src="https://github.com/OnePunchMonk.png" width="60" style="border-radius:50%" alt="OnePunchMonk"/></a>&nbsp;
 <a href="https://github.com/AnimeshMaheshwari22"><img src="https://github.com/AnimeshMaheshwari22.png" width="60" style="border-radius:50%" alt="Animesh Maheshwari"/></a>
