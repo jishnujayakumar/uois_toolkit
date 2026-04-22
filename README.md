@@ -3,8 +3,16 @@
 A toolkit for **Unseen Object Instance Segmentation (UOIS)**  
 ![banner](banner.png)
 
-[![Sanity Check](https://github.com/OnePunchMonk/uois_toolkit/actions/workflows/sanity_check.yml/badge.svg)](https://github.com/OnePunchMonk/uois_toolkit/actions/workflows/sanity_check.yml)
+[![Sanity Check](https://github.com/jishnujayakumar/uois_toolkit/actions/workflows/sanity_check.yml/badge.svg)](https://github.com/jishnujayakumar/uois_toolkit/actions/workflows/sanity_check.yml)
+[![PyPI version](https://img.shields.io/pypi/v/uois-toolkit?color=blue)](https://pypi.org/project/uois-toolkit/)
 [![PyPI Downloads](https://static.pepy.tech/personalized-badge/uois-toolkit?period=total&units=ABBREVIATION&left_color=BLACK&right_color=RED&left_text=downloads)](https://pepy.tech/projects/uois-toolkit)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c.svg)](https://pytorch.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/jishnujayakumar/uois_toolkit?style=social)](https://github.com/jishnujayakumar/uois_toolkit/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/jishnujayakumar/uois_toolkit)](https://github.com/jishnujayakumar/uois_toolkit/issues)
+[![arXiv](https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg)]()
+
 A PyTorch-based toolkit for loading and processing datasets for **Unseen Object Instance Segmentation (UOIS)**. This repository provides a standardized, easy-to-use interface for several popular UOIS datasets, simplifying the process of training and evaluating segmentation models.
 
 ---
@@ -30,7 +38,7 @@ A PyTorch-based toolkit for loading and processing datasets for **Unseen Object 
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/OnePunchMonk/uois_toolkit.git
+    git clone https://github.com/jishnujayakumar/uois_toolkit.git
     cd uois_toolkit
     ```
 
@@ -164,6 +172,23 @@ twine upload dist/*
 </details>
 
 ---
+
+## Citation
+
+If you use this toolkit in your research, please cite:
+
+```bibtex
+@software{uois_toolkit,
+  author = {Padalunkal, Jishnu Jaykumar},
+  title = {uois_toolkit: A PyTorch Toolkit for Unseen Object Instance Segmentation},
+  year = {2025},
+  url = {https://github.com/jishnujayakumar/uois_toolkit}
+}
+```
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request. See [issues](https://github.com/jishnujayakumar/uois_toolkit/issues) for open tasks.
 
 ## License
 
