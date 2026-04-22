@@ -38,12 +38,8 @@ class OCIDDataset(BaseDataset):
         seqs = sorted(list(data_path.glob('**/*seq*')))
         image_paths = []
         for seq in seqs:
-            if self.image_set == 'train' and ('seq-01' in str(seq) or 'seq-02' in str(seq) or 'seq-03' in str(seq) or 'seq-04' in str(seq) or 'seq-05' in str(seq)):
-                paths = sorted(list((seq / 'rgb').glob('*.png')))
-                image_paths += paths
-            elif self.image_set == 'test' and ('seq-06' in str(seq) or 'seq-07' in str(seq)):
-                 paths = sorted(list((seq / 'rgb').glob('*.png')))
-                 image_paths += paths
+            paths = sorted(list((seq / 'rgb').glob('*.png')))
+            image_paths += paths
         return image_paths
 
     def __getitem__(self, idx):
@@ -79,7 +75,7 @@ class OCIDDataset(BaseDataset):
         
         objs = []
         for i in range(boxes.shape[0]):
-            mask_img = binary_masks[:, :, i]
+            mask_img = binary_masks[:, :, i].astype(np.uint8)
             objs.append({
                 "bbox": boxes[i].tolist(), "bbox_mode": BoxMode.XYXY_ABS,
                 "segmentation": pycocotools_mask.encode(np.asfortranarray(mask_img)), "category_id": 1,

@@ -61,7 +61,7 @@ class iTeachHumanPlayDataset(BaseDataset):
         depth_img = cv2.imread(depth_filename, cv2.IMREAD_ANYDEPTH)
         if depth_img is None: depth_img = np.zeros((im.shape[0], im.shape[1]), dtype=np.float32)
 
-        height, width = depth_img.shape
+        height, width = depth_img.shape[:2]
         intrinsics = self._get_intrinsic_matrix()
         fx, fy, px, py = intrinsics[0, 0], intrinsics[1, 1], intrinsics[0, 2], intrinsics[1, 2]
         depth_img = depth_img / 1000.0
@@ -86,7 +86,7 @@ class iTeachHumanPlayDataset(BaseDataset):
             mask_img = binary_masks[:, :, i]
             objs.append({
                 "bbox": boxes[i].tolist(), "bbox_mode": BoxMode.XYXY_ABS,
-                "segmentation": pycocotools_mask.encode(np.asfortranarray(mask_img)), "category_id": 1,
+                "segmentation": pycocotools_mask.encode(np.asfortranarray(mask_img.astype(np.uint8))), "category_id": 1,
             })
         record["annotations"] = objs
         return record

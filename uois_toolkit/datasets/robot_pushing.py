@@ -85,7 +85,7 @@ class RobotPushingDataset(BaseDataset):
         intrinsics = meta_data['intrinsic_matrix']
         factor_depth = meta_data['factor_depth']
         fx, fy, px, py = intrinsics[0, 0], intrinsics[1, 1], intrinsics[0, 2], intrinsics[1, 2]
-        height, width = depth_img.shape
+        height, width = depth_img.shape[:2]
         depth_img = depth_img / factor_depth
         indices = np.indices((height, width), dtype=np.float32).transpose(1, 2, 0)
         z_e = depth_img
