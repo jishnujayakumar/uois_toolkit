@@ -186,6 +186,75 @@ If you use this toolkit in your research, please cite:
 }
 ```
 
+### Dataset Citations
+
+If you use any of the supported datasets, please also cite the original works:
+
+<details>
+<summary><b>Tabletop Object Dataset (TOD)</b></summary>
+
+```bibtex
+@inproceedings{xiang2020learning,
+  title={Learning RGB-D Feature Embeddings for Unseen Object Instance Segmentation},
+  author={Xiang, Yu and Xie, Christopher and Mousavian, Arsalan and Fox, Dieter},
+  booktitle={Conference on Robot Learning (CoRL)},
+  year={2020}
+}
+```
+</details>
+
+<details>
+<summary><b>OCID (Object Clutter Indoor Dataset)</b></summary>
+
+```bibtex
+@inproceedings{suchi2019easylabel,
+  title={EasyLabel: A Semi-Automatic Pixel-wise Object Annotation Tool for Creating Robotic RGB-D Datasets},
+  author={Suchi, Markus and Patten, Timothy and Fischinger, David and Vincze, Markus},
+  booktitle={International Conference on Robotics and Automation (ICRA)},
+  year={2019}
+}
+```
+</details>
+
+<details>
+<summary><b>OSD (Object Segmentation Dataset)</b></summary>
+
+```bibtex
+@inproceedings{richtsfeld2012segmentation,
+  title={Segmentation of Unknown Objects in Indoor Environments},
+  author={Richtsfeld, Andreas and Morwald, Thomas and Prankl, Johann and Zillich, Michael and Vincze, Markus},
+  booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year={2012}
+}
+```
+</details>
+
+<details>
+<summary><b>Robot Pushing Dataset</b></summary>
+
+```bibtex
+@inproceedings{bao2022unseen,
+  title={Unseen Object Instance Segmentation with Fully Test-time RGB-D Embeddings Adaptation},
+  author={Bao, Lu and Zhao, Haibin and Pan, Yixin and Li, Fang},
+  booktitle={IEEE International Conference on Robotics and Biomimetics (ROBIO)},
+  year={2022}
+}
+```
+</details>
+
+<details>
+<summary><b>iTeach-HumanPlay Dataset</b></summary>
+
+```bibtex
+@inproceedings{padalunkal2024iteach,
+  title={iTeach: Interactive Teaching for Robot Perception using Mixed Reality},
+  author={Padalunkal, Jishnu Jaykumar and Thapa, Sameer and Xiang, Yu},
+  booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year={2024}
+}
+```
+</details>
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request. See [issues](https://github.com/jishnujayakumar/uois_toolkit/issues) for open tasks.
