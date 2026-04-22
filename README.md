@@ -179,7 +179,7 @@ If you use this toolkit in your research, please cite:
 
 ```bibtex
 @software{uois_toolkit,
-  author = {Padalunkal, Jishnu Jaykumar and Aggarwal, Avaya and Maheshwari, Animesh},
+  author = {Jishnu Jaykumar P and Aggarwal, Avaya and Maheshwari, Animesh},
   title = {uois_toolkit: A PyTorch Toolkit for Unseen Object Instance Segmentation},
   year = {2025},
   url = {https://github.com/jishnujayakumar/uois_toolkit}
