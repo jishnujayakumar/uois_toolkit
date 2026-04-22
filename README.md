@@ -83,40 +83,99 @@ It is recommended to organize the downloaded datasets into a single `DATA/` dire
 
 ---
 
-## Usage Example
+## Usage
 
-You can easily import the datamodule into your own projects. The example below demonstrates how to load the `tabletop` dataset using `pytorch-lightning`.
+### Quick Start — Load Any Dataset
 
 ```python
 from uois_toolkit import get_datamodule, cfg
-import pytorch_lightning as pl
 
-# 1. Define the dataset name and its location
-dataset_name = "tabletop"
-data_path = "/path/to/your/data/tabletop"
-
-# 2. Get the datamodule instance
-# The default configuration can be customized by modifying the `cfg` object
-data_module = get_datamodule(
-    dataset_name=dataset_name,
-    data_path=data_path,
+# Available datasets: "tabletop", "ocid", "osd", "robot_pushing", "iteach_humanplay"
+dm = get_datamodule(
+    dataset_name="ocid",
+    data_path="/path/to/OCID-dataset",
     batch_size=4,
     num_workers=2,
     config=cfg
 )
 
-# 3. The datamodule is ready to be used with a PyTorch Lightning Trainer
-# model = YourLightningModel()
-# trainer = pl.Trainer(accelerator="auto")
-# trainer.fit(model, datamodule=data_module)
+dm.setup()
+batch = next(iter(dm.train_dataloader()))
 
-# Alternatively, you can inspect a data batch directly
-data_module.setup()
-train_loader = data_module.train_dataloader()
-batch = next(iter(train_loader))
+print("Image:", batch["image_color"].shape)   # [B, 3, H, W]
+print("Depth:", batch["depth"].shape)          # [B, C, H, W]
+print("Annotations:", len(batch["annotations"][0]))  # list of dicts per image
+```
 
-print(f"Successfully loaded a batch from the {dataset_name} dataset!")
-print("Image tensor shape:", batch["image_color"].shape)
+### Access Individual Datasets Directly
+
+```python
+from uois_toolkit.datasets import OCIDDataset, OSDDataset, TabletopDataset
+from uois_toolkit.datasets import RobotPushingDataset, iTeachHumanPlayDataset
+from uois_toolkit import cfg
+
+# Load a single dataset
+dataset = OCIDDataset(image_set="test", data_path="/path/to/OCID-dataset", config=cfg)
+print(f"Dataset size: {len(dataset)}")
+
+# Get a single sample
+sample = dataset[0]
+print("Keys:", sample.keys())
+# → file_name, image_id, height, width, image_color, depth, raw_depth, annotations
+```
+
+### Batch Format
+
+Each batch contains:
+
+| Key | Shape | Description |
+|-----|-------|-------------|
+| `image_color` | `[B, 3, H, W]` | RGB image (float, 0-255) |
+| `depth` | `[B, C, H, W]` | Depth map (normalized or XYZ) |
+| `raw_depth` | varies | Original depth before normalization |
+| `annotations` | `List[List[Dict]]` | Per-image list of object annotations |
+| `file_name` | `List[str]` | Source file paths |
+| `height`, `width` | `List[int]` | Image dimensions |
+
+Each annotation dict contains:
+- `bbox`: `[x1, y1, x2, y2]` in XYXY_ABS format
+- `segmentation`: RLE-encoded binary mask (pycocotools)
+- `category_id`: always `1` (unseen object)
+
+### Compute Evaluation Metrics
+
+```python
+import numpy as np
+from uois_toolkit.metrics import compute_metrics, get_available_metrics
+
+# See all available metrics
+print(get_available_metrics())
+# → ['precision', 'recall', 'f1_score', 'iou', 'iou_at_0.7']
+
+# Create example masks
+gt_mask = np.zeros((480, 640), dtype=np.uint8)
+gt_mask[100:300, 150:400] = 1  # ground truth object region
+
+pred_mask = np.zeros((480, 640), dtype=np.uint8)
+pred_mask[110:290, 160:390] = 1  # predicted object region
+
+# Compute metrics
+results = compute_metrics(gt_mask, pred_mask, ["f1_score", "iou", "precision", "recall"])
+print(results)
+# → {'f1_score': 0.89, 'iou': 0.80, 'precision': 0.92, 'recall': 0.86}
+```
+
+### Use with PyTorch Lightning
+
+```python
+from uois_toolkit import get_datamodule, cfg
+import pytorch_lightning as pl
+
+dm = get_datamodule("tabletop", "/path/to/tabletop", batch_size=8, config=cfg)
+
+model = YourLightningModel()
+trainer = pl.Trainer(accelerator="auto", max_epochs=10)
+trainer.fit(model, datamodule=dm)
 ```
 
 ---
