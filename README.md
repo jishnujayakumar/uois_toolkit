@@ -233,11 +233,11 @@ If you use any of the supported datasets, please also cite the original works:
 <summary><b>Robot Pushing Dataset</b></summary>
 
 ```bibtex
-@inproceedings{bao2022unseen,
-  title={Unseen Object Instance Segmentation with Fully Test-time RGB-D Embeddings Adaptation},
-  author={Bao, Lu and Zhao, Haibin and Pan, Yixin and Li, Fang},
-  booktitle={IEEE International Conference on Robotics and Biomimetics (ROBIO)},
-  year={2022}
+@inproceedings{lu2023sss,
+  title={Self-Supervised Unseen Object Instance Segmentation via Long-Term Robot Interaction},
+  author={Lu, Yangxiao and Khargonkar, Ninad and Xu, Zesheng and Averill, Charles and Palanisamy, Kamalesh and Hang, Kaiyu and Guo, Yunhui and Ruozzi, Nicholas and Xiang, Yu},
+  booktitle={Robotics: Science and Systems (RSS)},
+  year={2023}
 }
 ```
 </details>
@@ -246,11 +246,14 @@ If you use any of the supported datasets, please also cite the original works:
 <summary><b>iTeach-HumanPlay Dataset</b></summary>
 
 ```bibtex
-@inproceedings{padalunkal2024iteach,
-  title={iTeach: Interactive Teaching for Robot Perception using Mixed Reality},
-  author={Padalunkal, Jishnu Jaykumar and Thapa, Sameer and Xiang, Yu},
-  booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
-  year={2024}
+@misc{p2026iteach,
+  title={iTeach: In the Wild Interactive Teaching for Failure-Driven Adaptation of Robot Perception},
+  author={Jishnu Jaykumar P and Cole Salvato and Vinaya Bomnale and Jikai Wang and Yu Xiang},
+  year={2026},
+  eprint={2410.09072},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/2410.09072}
 }
 ```
 </details>
