@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="banner.svg" alt="uois_toolkit" width="100%"/>
+  <img src="media/banner.svg" alt="uois_toolkit" width="100%"/>
 </p>
 
 <p align="center">
